@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<title>Article Blog for own use</title>
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body class="w-100">
+		<div class="container flex justify-content-center align-content-center">
+			<p>
+				This web application was created to fulfill Web Technology module’s
+				requirements and does not represent an actual company or service
+			</p>
+			<h1 class="mb-4">Articles</h1>
+			<a href="/create" class="btn btn-danger">Create</a>
+			<div
+				class="inline d-flex flex-row flex-wrap justify-content-start align-content-center row"
+			>
+				<% posts.articles.forEach(article => { %>
+				<div class="card mt-4 w-25 col-4 mx-3">
+					<div class="card-body">
+						<h4 class="card-title"><%= article.title %></h4>
+						<div class="card-text mb-2"><%= article.description %></div>
+						<a
+							href="/update/<%= article.id %>"
+							class="btn btn-outline-secondary"
+							>Edit</a
+						>
+						<form
+							action="/delete/<%= article.id %>"
+							method="POST"
+							class="d-inline"
+						>
+							<button type="submit" class="btn btn-warning">Delete</button>
+						</form>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</body>
+</html>
